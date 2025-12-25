@@ -1,1 +1,18 @@
 @import "tailwindcss";
+
+@theme {
+  --color-primary: #ee8c2b;
+  --color-primary-hover: #d97b1f;
+  
+  --color-background-light: #f8f7f6;
+  --color-background-dark: #221910;
+  
+  --color-text-main: #1b140d;
+  --color-text-secondary: #9a734c;
+  
+  --color-border-light: #e7dbcf;
+  --color-input-bg-light: #fcfaf8;
+  
+  --font-display: "Plus Jakarta Sans", "Noto Sans JP", sans-serif;
+  --font-body: "Noto Sans JP", sans-serif;
+}
