@@ -23,7 +23,17 @@
     <% unless devise_controller? %>
       <header class="bg-white dark:bg-[#2a1f16] shadow-sm fixed top-0 left-0 right-0 z-10">
         <nav class="container mx-auto px-4 py-4">
-          <ul class="flex items-center justify-end gap-4">
+          <div class="flex items-center justify-between">
+            <!-- 左側: ロゴ/タイトル -->
+            <div class="flex items-center">
+            <span class="material-symbols-outlined text-[20px] text-primary">auto_stories</span>
+              <%= link_to root_path, class: "text-2xl font-bold text-[#1b140d] dark:text-white hover:text-primary dark:hover:text-primary transition-colors" do %>
+                プレゼンテーションに一言を
+              <% end %>
+            </div>
+
+            <!-- 右側: ナビゲーションメニュー -->
+            <ul class="flex items-center gap-4">
             <% if user_signed_in? %>
               <li>
                 <%= button_to "ログアウト", destroy_user_session_path, 
