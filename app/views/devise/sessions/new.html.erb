@@ -1,26 +1,75 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-orange-50 to-amber-50 dark:from-gray-900 dark:to-gray-800">
+  <div class="max-w-md w-full bg-white dark:bg-[#2a1f16] rounded-2xl shadow-xl overflow-hidden">
+    <!-- Header -->
+    <div class="px-8 pt-8 pb-4">
+      <h2 class="text-3xl font-bold text-[#1b140d] dark:text-white text-center">ログイン</h2>
+      <p class="mt-2 text-center text-sm text-[#9a734c] dark:text-[#c9a87c]">
+        アカウントにログインしてください
+      </p>
     </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+    <!-- Form Content -->
+    <div class="px-8 pb-8 pt-2">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "flex flex-col gap-5" }) do |f| %>
+        
+        <!-- Email Field -->
+        <label class="flex flex-col gap-1.5 w-full">
+          <span class="text-[#1b140d] dark:text-gray-200 text-base font-medium leading-normal">
+            <%= f.label :email, "メールアドレス" %>
+          </span>
+          <div class="relative">
+            <%= f.email_field :email, 
+              autofocus: true, 
+              autocomplete: "email",
+              placeholder: "user@example.com",
+              class: "form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#1b140d] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-[#e7dbcf] dark:border-[#4a3d30] bg-[#fcfaf8] dark:bg-[#221910] focus:border-primary h-12 placeholder:text-[#9a734c] dark:placeholder:text-[#6b5847] px-4 text-base font-normal leading-normal transition-all" 
+            %>
+          </div>
+        </label>
+
+        <!-- Password Field -->
+        <label class="flex flex-col gap-1.5 w-full">
+          <div class="flex justify-between items-center">
+            <span class="text-[#1b140d] dark:text-gray-200 text-base font-medium leading-normal">
+              <%= f.label :password, "パスワード" %>
+            </span>
+            <% if devise_mapping.recoverable? %>
+              <%= link_to "パスワードをお忘れですか？", 
+                new_password_path(resource_name), 
+                class: "text-sm font-medium text-primary hover:text-[#d67b20] transition-colors" 
+              %>
+            <% end %>
+          </div>
+          <div class="relative">
+            <%= f.password_field :password, 
+              autocomplete: "current-password",
+              placeholder: "••••••••",
+              class: "form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#1b140d] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-[#e7dbcf] dark:border-[#4a3d30] bg-[#fcfaf8] dark:bg-[#221910] focus:border-primary h-12 placeholder:text-[#9a734c] dark:placeholder:text-[#6b5847] px-4 text-base font-normal leading-normal transition-all" 
+            %>
+          </div>
+        </label>
+
+        <!-- Remember Me -->
+        <% if devise_mapping.rememberable? %>
+          <label class="flex items-center gap-2">
+            <%= f.check_box :remember_me, class: "rounded border-[#e7dbcf] dark:border-[#4a3d30] text-primary focus:ring-primary" %>
+            <span class="text-[#1b140d] dark:text-gray-200 text-sm">ログイン状態を保持する</span>
+          </label>
+        <% end %>
+
+        <!-- Spacing -->
+        <div class="h-2"></div>
+
+        <!-- Submit Button -->
+        <%= f.submit "ログインする", 
+          class: "flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-4 bg-primary hover:bg-[#d67b20] transition-colors text-white text-base font-bold leading-normal tracking-[0.015em] shadow-sm" 
+        %>
+      <% end %>
+
+      <!-- Links -->
+      <div class="mt-6 text-center space-y-2">
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
