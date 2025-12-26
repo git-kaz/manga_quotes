@@ -1,16 +1,48 @@
 <div class="container mx-auto px-4 py-8">
-  <h1 class="text-3xl font-bold mb-6">名言一覧</h1>
-  
-  <%= link_to '新規投稿', new_quote_path, class: 'btn btn-primary mb-4' %>
-  
-  <div class="grid gap-4">
+  <!-- ヒーローセクション -->
+  <section class="mb-10 rounded-2xl bg-gradient-to-r from-orange-50 to-amber-50 dark:from-gray-800 dark:to-gray-900 border border-orange-100 dark:border-gray-700 overflow-hidden relative">
+    <!-- 装飾用の背景 -->
+    <div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+    
+    <div class="flex flex-col md:flex-row items-center justify-between p-8 md:p-12 relative z-10 gap-8">
+      <!-- テキストコンテンツ -->
+      <div class="flex flex-col gap-4 max-w-2xl text-center md:text-left">
+        <h2 class="text-3xl md:text-4xl font-black text-text-main dark:text-white leading-tight">
+          心に響く<span class="text-primary">名言</span>を共有しよう
+        </h2>
+        <p class="text-text-muted dark:text-gray-400 text-lg font-medium">
+          あなたの人生を変えた一言、忘れられないあのシーンのセリフ。<br class="hidden md:block"/>
+          コレクションに追加して、みんなと感動を分かち合いましょう。
+        </p>
+      </div>
+      
+      <!-- 投稿ボタン -->
+      <div class="shrink-0">
+        <% if user_signed_in? %>
+          <%= link_to new_quote_path, class: "group flex items-center gap-2 h-14 px-8 rounded-xl bg-primary hover:bg-orange-600 active:scale-95 transition-all text-white text-base font-bold shadow-lg shadow-orange-500/30" do %>
+            <span class="material-symbols-outlined">edit_square</span>
+            <span>セリフを投稿する</span>
+          <% end %>
+        <% else %>
+          <%= link_to new_user_session_path, class: "group flex items-center gap-2 h-14 px-8 rounded-xl bg-primary hover:bg-orange-600 active:scale-95 transition-all text-white text-base font-bold shadow-lg shadow-orange-500/30" do %>
+            <span class="material-symbols-outlined">login</span>
+            <span>ログインして投稿する</span>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </section>
+
+  <!-- 名言一覧 -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     <% @quotes.each do |quote| %>
-      <div class="bg-white rounded-lg shadow-md p-6">
-        <p class="text-lg font-semibold mb-2"><%= quote.content %></p>
-        <p class="text-gray-600 mb-3">- <%= quote.source %></p>
-        <div class="flex justify-between items-center">
-          <span class="badge"><%= quote.scene %></span>
-          <span class="text-sm text-gray-500">by <%= quote.user.username %></span>
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-shadow p-6">
+        <p class="text-lg font-medium text-gray-800 dark:text-white mb-4">
+          "<%= quote.content %>"
+        </p>
+        <div class="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
+          <span><%= quote.author %></span>
+          <span><%= quote.created_at.strftime('%Y/%m/%d') %></span>
         </div>
       </div>
     <% end %>
