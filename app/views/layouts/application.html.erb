@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Myapp" %></title>
+    <title><%= content_for(:title) || "プレゼンセーションに一言を" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
@@ -19,23 +19,46 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   </head>
 
-  <header>
-    <% if user_signed_in? %>
-      <li>
-        <%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to "新規登録", new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "ログイン", new_user_session_path %>
-      </li>
-    <% end %>
-  </header>
+  <body class="min-h-screen">
+    <% unless devise_controller? %>
+      <header class="bg-white dark:bg-[#2a1f16] shadow-sm fixed top-0 left-0 right-0 z-10">
+        <nav class="container mx-auto px-4 py-4">
+          <div class="flex items-center justify-between">
+            <!-- 左側: ロゴ/タイトル -->
+            <div class="flex items-center">
+            <span class="material-symbols-outlined text-[20px] text-primary">auto_stories</span>
+              <%= link_to root_path, class: "text-2xl font-bold text-[#1b140d] dark:text-white hover:text-primary dark:hover:text-primary transition-colors" do %>
+                プレゼンテーションに一言を
+              <% end %>
+            </div>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+            <!-- 右側: ナビゲーションメニュー -->
+            <ul class="flex items-center gap-4">
+            <% if user_signed_in? %>
+              <li>
+                <%= button_to "ログアウト", destroy_user_session_path, 
+                  method: :delete, 
+                  class: "text-primary hover:text-[#d67b20] transition-colors font-medium" 
+                %>
+              </li>
+            <% else %>
+              <li>
+                <%= link_to "新規登録", new_user_registration_path, 
+                  class: "text-primary hover:text-[#d67b20] transition-colors font-medium" 
+                %>
+              </li>
+              <li>
+                <%= link_to "ログイン", new_user_session_path, 
+                  class: "text-primary hover:text-[#d67b20] transition-colors font-medium" 
+                %>
+              </li>
+            <% end %>
+          </ul>
+        </nav>
+      </header>
+    <% end %>
+
+    <main class="<%= devise_controller? ? '' : 'container mx-auto mt-28 px-5' %>">
       <%= yield %>
     </main>
   </body>
