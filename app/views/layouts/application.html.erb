@@ -26,7 +26,7 @@
           <div class="flex items-center justify-between">
             <!-- 左側: ロゴ/タイトル -->
             <div class="flex items-center">
-            <span class="material-symbols-outlined text-[20px] text-primary">auto_stories</span>
+            <span class="material-symbols-outlined text-[20px] text-primary mx-4">auto_stories</span>
               <%= link_to root_path, class: "text-2xl font-bold text-[#1b140d] dark:text-white hover:text-primary dark:hover:text-primary transition-colors" do %>
                 プレゼンテーションに一言を
               <% end %>
@@ -49,7 +49,7 @@
               </li>
               <li>
                 <%= link_to "ログイン", new_user_session_path, 
-                  class: "text-primary hover:text-[#d67b20] transition-colors font-medium" 
+                  class: "text-white bg-primary hover:bg-orange-600 transition-colors font-medium p-2 rounded-lg" 
                 %>
               </li>
             <% end %>
