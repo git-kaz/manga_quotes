@@ -36,6 +36,7 @@
   <!-- 名言一覧 -->
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     <% @quotes.each do |quote| %>
+    <%= link_to quote_path(quote), class: "block" do %>
       <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-shadow p-6 flex flex-col justify-between">
         <p class="text-lg font-medium text-gray-800 dark:text-white mb-4">
           "<%= quote.content %>"
@@ -46,6 +47,7 @@
           <span><%= quote.created_at.strftime('%Y/%m/%d') %></span>
         </div>
       </div>
+      <% end %>
     <% end %>
   </div>
 </div>

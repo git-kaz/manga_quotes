@@ -1,5 +1,5 @@
-<div class="flex min-h-screen items-center justify-center">
-  <div class="w-full max-w-[480px] bg-white rounded-2xl shadow-xl border border-border-light overflow-hidden z-10">
+<div class="flex justify-center">
+  <div class="w-full max-w-2xl bg-white rounded-2xl shadow-xl border border-border-light overflow-hidden z-0">
  <! -- title -->
 <div class="px-8 pt-10 pb-4 text-center">
     <h1 class="text-2xl md:text-3xl font-bold mb-2">
@@ -12,47 +12,21 @@
 </div>
 
 <! -- form container -->
-    <%= form_with(model: @quote) do |f| %>
-        <% if @quote.errors.any? %>
-            <div style="color: red">
-                <h2><%= pluralize(quote.errors.count, "error") %>prohibited this task from being saved:</h2>
-            </div>
-
-            <ul>
-                <% quote.errors.each do |error| %>
-                    <li><%= error.full_message %></li>
-                <% end %>
-            </ul>
-            </div>
-        <% end %>
     <div class="p-8 pt-4">
-        <% input_class = "form-input w-full rounded-lg border border-border-light
-                        bg-input-bg-light h-30 px-4 text-base
-                        focus:border-primary focus:ring-primary" %>
+       <%= render 'form', quote: @quote %>
 
-        <div>
-            <%= f.label :content, "セリフの内容", class:"block text-sm font-bold" %>
-            <%= f.text_area :content, 
-                  class: input_class,
-                  placeholder: "例：お前はもう死んでいる" %>
-        </div>
-
-        <div>
-            <label class="text-sm font-bold">出典（キャラクター名や作品名）</label>
-            <%= f.text_field :source, 
-                  class: "form-input w-full rounded-lg border border-border-light
-                          bg-input-bg-light h-12 px-4 text-base
-                          focus:border-primary focus:ring-primary",
-                  placeholder: "例：北斗の拳" %>
-        </div>
-
-        <div>
-            <%= f.submit "投稿する",
-                  class: "w-full mt-4 h-14 bg-primary hover:bg-orange-600 active:scale-95
-                          transition-all text-white text-base font-bold rounded-xl
-                          shadow-lg shadow-orange-500/30" %>
-        </div>
-    <% end %>
-    </div>
-    </div>
+       <div class="rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800/50 p-4 mt-5 flex gap-3 items-start">
+<span class="material-symbols-outlined text-blue-600 dark:text-blue-400 mt-0.5">info</span>
+<div class="text-sm text-blue-800 dark:text-blue-200">
+<p class="font-bold mb-1">投稿のヒント</p>
+<p class="opacity-90 leading-relaxed">正確なセリフを入力することで、他のユーザーが検索しやすくなります。感動した理由をシーン説明に加えると、共感を得やすくなります。</p>
 </div>
+</div>
+    </div>
+     
+    </div>
+
+   
+
+</div>
+

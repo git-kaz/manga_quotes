@@ -1,0 +1,93 @@
+<div class="min-h-screen py-10 px-4">
+  <div class="container mx-auto max-w-4xl">
+    
+    <article class="bg-white rounded-2xl shadow-xl border border-border-light overflow-hidden">
+      
+      <!-- Quote Hero Section -->
+      <div class="relative px-6 py-16 md:px-20 md:py-24 flex flex-col items-center justify-center text-center">
+        <!-- Decorative Quotes -->
+        <span class="absolute top-8 left-8 text-primary/10 font-serif text-9xl leading-none select-none">"</span>
+        <span class="absolute bottom-8 right-8 text-primary/10 font-serif text-9xl leading-none select-none rotate-180">"</span>
+        
+        <!-- Quote Content -->
+        <h1 class="relative text-3xl md:text-4xl lg:text-5xl font-black leading-snug tracking-tight text-text-main">
+          <%= @quote.content %>
+        </h1>
+        
+        <!-- Action Buttons -->
+        <div class="mt-8 flex items-center justify-center gap-4">
+          <button class="flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 text-red-500 hover:bg-red-100 transition-colors group">
+            <span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">favorite</span>
+            <span class="text-sm font-bold">4,281</span>
+          </button>
+          
+          <button class="flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-blue-500 hover:bg-blue-100 transition-colors group">
+            <span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">share</span>
+            <span class="text-sm font-bold">シェア</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="w-full h-px bg-gradient-to-r from-transparent via-border-light to-transparent"></div>
+
+      <!-- Info Grid -->
+      <div class="p-6 md:p-10 bg-[#fcfaf8]">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          
+          <!-- Metadata Column -->
+          <div class="lg:col-span-2 space-y-6">
+            <h3 class="text-lg font-bold text-text-main border-l-4 border-primary pl-3">詳細情報</h3>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <!-- Source Info -->
+              <div class="bg-white p-4 rounded-xl border border-border-light hover:border-primary/30 transition-colors">
+                <p class="text-xs font-bold text-text-sub uppercase tracking-wider mb-1">出典</p>
+                <p class="text-base font-bold text-text-main"><%= @quote.source %></p>
+              </div>
+              
+              <!-- Created At -->
+              <div class="bg-white p-4 rounded-xl border border-border-light">
+                <p class="text-xs font-bold text-text-sub uppercase tracking-wider mb-1">投稿日時</p>
+                <p class="text-base font-medium text-text-main">
+                  <%= l(@quote.created_at, format: :long) rescue @quote.created_at.strftime("%Y年%m月%d日") %>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Column -->
+          <div class="space-y-4">
+            <h3 class="text-lg font-bold text-text-main border-l-4 border-primary pl-3">操作</h3>
+            
+            <!-- Edit Button -->
+            <%= link_to edit_quote_path(@quote), 
+                  class: "flex items-center justify-center gap-2 w-full px-4 py-3 bg-primary hover:bg-orange-600 text-white font-bold rounded-xl transition-all active:scale-95 shadow-lg shadow-orange-500/30" do %>
+              <span class="material-symbols-outlined text-[20px]">edit</span>
+              編集する
+            <% end %>
+            
+            <!-- Delete Button -->
+            <%= button_to quote_path(@quote), 
+                  method: :delete,
+                  data: { turbo_confirm: "本当に削除しますか?" },
+                  class: "flex items-center justify-center gap-2 w-full px-4 py-3 bg-red-500 hover:bg-red-600 text-white font-bold rounded-xl transition-all active:scale-95 shadow-lg shadow-red-500/30" do %>
+              <span class="material-symbols-outlined text-[20px]">delete</span>
+              削除する
+            <% end %>
+            
+            <!-- Back to List -->
+            <%= link_to quotes_path, 
+                  class: "flex items-center justify-center gap-2 w-full px-4 py-3 bg-gray-100 hover:bg-gray-200 text-text-main font-bold rounded-xl transition-all" do %>
+              <span class="material-symbols-outlined text-[20px]">arrow_back</span>
+              一覧に戻る
+            <% end %>
+          </div>
+
+        </div>
+      </div>
+
+    </article>
+
+  </div>
+</div>

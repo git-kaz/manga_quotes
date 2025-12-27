@@ -1,0 +1,34 @@
+<% input_class = "form-input w-full rounded-lg border border-border-light
+                  bg-input-bg-light px-4 text-base
+                  focus:border-primary focus:ring-primary" %>
+
+<%= form_with(model: quote, local: true) do |f| %>
+  <!-- エラーメッセージ -->
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <div class="space-y-5">
+    <!-- セリフの内容 -->
+    <div>
+      <%= f.label :content, "セリフの内容", class: "block text-sm font-bold mb-2" %>
+      <%= f.text_area :content, 
+            class: "#{input_class} h-32",
+            placeholder: "例：お前はもう死んでいる" %>
+    </div>
+
+    <!-- 出典 -->
+    <div>
+      <%= f.label :source, "出典（キャラクター名や作品名）", class: "block text-sm font-bold mb-2" %>
+      <%= f.text_field :source, 
+            class: "#{input_class} h-12",
+            placeholder: "例：北斗の拳" %>
+    </div>
+
+    <!-- 送信ボタン -->
+    <div>
+      <%= f.submit quote.new_record? ? "投稿する" : "更新する",
+            class: "w-full h-14 bg-primary hover:bg-orange-600 active:scale-95
+                    transition-all text-white text-base font-bold rounded-xl
+                    shadow-lg shadow-orange-500/30" %>
+    </div>
+  </div>
+<% end %>
