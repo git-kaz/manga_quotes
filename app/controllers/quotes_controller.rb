@@ -28,9 +28,16 @@ class QuotesController < ApplicationController
   end
 
   def update
+    if @quote.update(quote_params)
+      redirect_to quote_path(@quote), notice: 'Quote was successfully updated.'
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @quote.destroy
+    redirect_to quotes_path, notice: 'Quote was successfully deleted.'
   end
 
   private
@@ -38,7 +45,7 @@ class QuotesController < ApplicationController
   def set_quote
     @quote = Quote.find(params[:id])
   end
-  
+
   def quote_params
     params.require(:quote).permit(:content, :source)
   end
