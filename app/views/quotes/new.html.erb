@@ -12,47 +12,8 @@
 </div>
 
 <! -- form container -->
-    <%= form_with(model: @quote) do |f| %>
-        <% if @quote.errors.any? %>
-            <div style="color: red">
-                <h2><%= pluralize(quote.errors.count, "error") %>prohibited this task from being saved:</h2>
-            </div>
-
-            <ul>
-                <% quote.errors.each do |error| %>
-                    <li><%= error.full_message %></li>
-                <% end %>
-            </ul>
-            </div>
-        <% end %>
     <div class="p-8 pt-4">
-        <% input_class = "form-input w-full rounded-lg border border-border-light
-                        bg-input-bg-light h-30 px-4 text-base
-                        focus:border-primary focus:ring-primary" %>
-
-        <div>
-            <%= f.label :content, "セリフの内容", class:"block text-sm font-bold" %>
-            <%= f.text_area :content, 
-                  class: input_class,
-                  placeholder: "例：お前はもう死んでいる" %>
-        </div>
-
-        <div>
-            <label class="text-sm font-bold">出典（キャラクター名や作品名）</label>
-            <%= f.text_field :source, 
-                  class: "form-input w-full rounded-lg border border-border-light
-                          bg-input-bg-light h-12 px-4 text-base
-                          focus:border-primary focus:ring-primary",
-                  placeholder: "例：北斗の拳" %>
-        </div>
-
-        <div>
-            <%= f.submit "投稿する",
-                  class: "w-full mt-4 h-14 bg-primary hover:bg-orange-600 active:scale-95
-                          transition-all text-white text-base font-bold rounded-xl
-                          shadow-lg shadow-orange-500/30" %>
-        </div>
-    <% end %>
+       <%= render 'form', quote: @quote %>
     </div>
     </div>
 </div>

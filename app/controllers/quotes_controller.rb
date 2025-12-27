@@ -21,6 +21,7 @@ class QuotesController < ApplicationController
   end
 
   def show
+    @quote = Quote.find(params[:id])
   end
 
   def edit
