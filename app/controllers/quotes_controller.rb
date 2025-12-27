@@ -11,6 +11,12 @@ class QuotesController < ApplicationController
   end
 
   def create
+    @quote = current_user.quotes.build(quote_params)
+    if @quote.save
+      redirect_to quotes_path, notice: 'Quote was successfully created.'
+    else
+      render :new
+    end
   
   end
 
@@ -24,6 +30,12 @@ class QuotesController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+
+  def quote_params
+    params.require(:quote).permit(:content, :source)
   end
 
 
