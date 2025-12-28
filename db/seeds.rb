@@ -5,7 +5,6 @@ user = User.create!(
   password: 'password',
   password_confirmation: 'password'
   )
-end
 
 quotes_data = [
   { 
