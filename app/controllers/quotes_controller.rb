@@ -1,9 +1,11 @@
 class QuotesController < ApplicationController
   before_action :authenticate_user!, only: %i[new create edit update destroy]
   before_action :set_quote, only: %i[show edit update destroy]
+  before_action :set_search
 
   def index
-    @quotes = Quote.includes(:user).order(created_at: :desc)
+    @q = Quote.ransack(params[:q])
+    @quotes = @q.result(distinct: true).includes(:user).order(created_at: :desc)
   end
 
   def new
@@ -48,6 +50,10 @@ class QuotesController < ApplicationController
 
   def quote_params
     params.require(:quote).permit(:content, :source, :scene)
+  end
+
+  def set_search
+    @q = Quote.ransack(params[:q])
   end
 
 

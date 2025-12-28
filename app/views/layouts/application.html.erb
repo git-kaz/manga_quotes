@@ -34,22 +34,23 @@
 
             <!-- 右側: ナビゲーションメニュー -->
             <ul class="flex items-center gap-4">
+              <%= render 'search', q: @q, url: quotes_path %>
             <% if user_signed_in? %>
               <li>
                 <%= button_to "ログアウト", destroy_user_session_path, 
                   method: :delete, 
-                  class: "text-primary hover:text-[#d67b20] transition-colors font-medium" 
+                  class: "text-primary hover:text-[#d67b20] transition-colors font-medium cursor-pointer" 
                 %>
               </li>
             <% else %>
               <li>
                 <%= link_to "新規登録", new_user_registration_path, 
-                  class: "text-primary hover:text-[#d67b20] transition-colors font-medium" 
+                  class: "text-primary hover:text-[#d67b20] transition-colors font-medium cursor-pointer" 
                 %>
               </li>
               <li>
                 <%= link_to "ログイン", new_user_session_path, 
-                  class: "text-white bg-primary hover:bg-orange-600 transition-colors font-medium p-2 rounded-lg" 
+                  class: "text-white bg-primary hover:bg-orange-600 transition-colors font-medium p-2 rounded-lg cursor-pointer"  
                 %>
               </li>
             <% end %>

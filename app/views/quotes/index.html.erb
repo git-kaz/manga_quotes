@@ -1,4 +1,5 @@
 <div class="container mx-auto px-4 py-8">
+    
   <!-- ヒーローセクション -->
   <section class="mb-10 rounded-2xl bg-gradient-to-r from-orange-50 to-amber-50 dark:from-gray-800 dark:to-gray-900 border border-orange-100 dark:border-gray-700 overflow-hidden relative">
     <!-- 装飾用の背景 -->
@@ -19,7 +20,7 @@
       <!-- 投稿ボタン -->
       <div class="shrink-0">
         <% if user_signed_in? %>
-          <%= link_to new_quote_path, class: "group flex items-center gap-2 h-14 px-8 rounded-xl bg-primary hover:bg-orange-600 active:scale-95 transition-all text-white text-base font-bold shadow-lg shadow-orange-500/30" do %>
+          <%= link_to new_quote_path, class: "group flex items-center gap-2 h-14 px-8 rounded-xl bg-primary hover:bg-orange-600 font-bold shadow-lg shadow-orange-500/30 active:scale-95 transition-all text-white text-base " do %>
             <span class="material-symbols-outlined">edit_square</span>
             <span>セリフを投稿する</span>
           <% end %>
