@@ -47,7 +47,7 @@ class QuotesController < ApplicationController
   end
 
   def quote_params
-    params.require(:quote).permit(:content, :source)
+    params.require(:quote).permit(:content, :source, :scene)
   end
 
 
