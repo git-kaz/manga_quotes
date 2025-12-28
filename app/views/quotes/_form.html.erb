@@ -11,8 +11,8 @@
     <div>
       <%= f.label :content, "セリフの内容", class: "block text-sm font-bold mb-2" %>
       <%= f.text_area :content, 
-            class: "#{input_class} h-32",
-            placeholder: "例：お前はもう死んでいる" %>
+            class: "#{input_class} h-22",
+            placeholder: "例：不正解は無意味を意味しない" %>
     </div>
 
     <!-- 出典 -->
@@ -20,7 +20,19 @@
       <%= f.label :source, "出典（キャラクター名や作品名）", class: "block text-sm font-bold mb-2" %>
       <%= f.text_field :source, 
             class: "#{input_class} h-12",
-            placeholder: "例：北斗の拳" %>
+            placeholder: "例：チ。-地球の運動について-" %>
+    </div>
+
+     <!-- シーン -->
+    <div>
+      <%= f.label :scene, "使える場面や使用例", class: "block text- font-bold mb-2" %>
+      <%= f.text_area :scene, 
+            class: "#{input_class} h-42",
+            placeholder: "例：エラーが出たら「間違った」と落ち込んでいませんか？大丈夫。「不正解は無意味を意味しない」んです
+
+    ・間違いがあった時
+    ・エラーが出た時
+    ・無駄な作業をしたかなと後悔した時" %>
     </div>
 
     <!-- 送信ボタン -->

@@ -54,11 +54,15 @@
                 </p>
               </div>
             </div>
+            <!-- Scene Description -->
+             <div class="bg-white p-4 rounded-xl border border-border-light hover:border-primary/30 transition-colors">
+                <p class="text-xs font-bold text-text-sub uppercase tracking-wider mb-1">使えるシーン・使用例</p>
+                <p class="text-base font-bold text-text-main"><%= simple_format(@quote.scene) %></p>
+              </div>
           </div>
 
           <!-- Action Column -->
           <div class="space-y-4">
-            <h3 class="text-lg font-bold text-text-main border-l-4 border-primary pl-3">操作</h3>
             
             <!-- Edit Button -->
             <%= link_to edit_quote_path(@quote), 
