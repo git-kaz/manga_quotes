@@ -1,10 +1,8 @@
-
-user = User.find_or_create_by!(
-   email: 'test@example.com',
-  username: 'test',
-  password: 'password',
-  password_confirmation: 'password'
-  )
+user = User.find_or_create_by!(email: 'test@example.com') do |user|
+  username: 'test'
+  user.password = 'password123'
+  user.password_confirmation = 'password123'
+end
 
 quotes_data = [
   { 
