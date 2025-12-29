@@ -1,5 +1,5 @@
 
-user = User.create!(
+user = User.find_or_create_by!(
    email: 'test@example.com',
   username: 'test',
   password: 'password',
