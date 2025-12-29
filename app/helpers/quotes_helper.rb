@@ -10,5 +10,7 @@ module QuotesHelper
       text: x_share_text(quote),
       hashtags: 'プレゼンテーションに一言を,RUNTEQ'
     }
+
+    "https://twitter.com/intent/tweet?#{params.to_query}"
   end
 end

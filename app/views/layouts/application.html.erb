@@ -18,15 +18,17 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
     <!-- 動的OGP -->
     <meta property="og:title" content="<%= content_for?(:og_title) ? yield(:og_title) : 'プレゼンテーションに一言を' %>">
-    <meta property="og:description" content="<%= content_for?(:og_description) ? yield(:og_description) : 'プレゼンテーション資料に使えるマンガやアニメの名言・セリフを共有するプラットフォームです。心に響く一言を見つけて、あなたのプレゼンをもっと魅力的にしましょう！' %>">
+    <meta property="og:description" content="<%= content_for?(:og_description) ? yield(:og_description) : '心に響く名言やセリフを見つけて、プレゼンをもっと魅力的に！' %>">
     <meta property="og:type" content="website">
     <meta property="og:url" content="<%= request.original_url %>">
-    <meta property="og:image" content="<%= content_for?(:og_image) ? yield(:og_image) : image_url('share.png') %>">
+    <meta property="og:image" content="<%= content_for?(:og_image) ? yield(:og_image) : asset_url('share.png', host: request.base_url) %>">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">   
     <!-- twitter card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="<%= content_for?(:twitter_title) ? yield(:twitter_title) : 'プレゼンテーションに一言を' %>">
-    <meta name="twitter:description" content="<%= content_for?(:twitter_description) ? yield(:twitter_description) : 'プレゼンテーション資料に使えるマンガやアニメの名言・セリフを共有するプラットフォームです。心に響く一言を見つけて、あなたのプレゼンをもっと魅力的にしましょう！' %>">
-    <meta name="twitter:image" content="<%= content_for?(:twitter_image) ? yield(:twitter_image) : image_url('share.png') %>">
+    <meta name="twitter:description" content="<%= content_for?(:twitter_description) ? yield(:twitter_description) : '心に響く名言やセリフを見つけて、プレゼンをもっと魅力的に！' %>">
+    <meta name="twitter:image" content="<%= content_for?(:twitter_image) ? yield(:twitter_image) : asset_url('share.png', host: request.base_url) %>">
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   </head>
