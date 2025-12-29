@@ -10,5 +10,5 @@ module QuotesHelper
       text: x_share_text(quote),
       hashtags: 'プレゼンテーションに一言を,RUNTEQ'
     }
-
+  end
 end

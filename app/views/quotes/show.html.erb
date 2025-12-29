@@ -1,6 +1,6 @@
 <% content_for :og_title, @quote.content %>
 <% content_for :og_description, "出典: #{@quote.source}" %>
-<% content_for :og_image, image_url('default_og.png') %>
+<% content_for :og_image, image_url('share.png') %>
 
 <div class="min-h-screen py-10 px-4">
   <div class="container mx-auto max-w-4xl">
@@ -25,13 +25,17 @@
             <span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">favorite</span>
             <span class="text-sm font-bold">4,281</span>
           </button> %>
-          
+          <div
+            data-controller="share"
+            data-share-url-value="<%= x_share_url(@quote) %>"
+          >
           <button 
-          onclick="
-          class="flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-blue-500 hover:bg-blue-100 transition-colors group">
-            <span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">share</span>
-            <span class="text-sm font-bold">シェア</span>
+            data-action="click->share#shareX"
+            class="flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-blue-500 hover:bg-blue-100 transition-colors group">
+          <span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">share</span>
+          <span class="text-sm font-bold">シェア</span>
           </button>
+          </div>
         </div>
       </div>
 
