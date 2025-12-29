@@ -1,7 +1,7 @@
 module QuotesHelper
   #xシェア機能
   def x_share_text(quote)
-    "#{quote.content}/n/n出典: #{quote.source}"
+    "次のプレゼンでこのセリフ使えるかも？\n『#{quote.content}』\n出典: #{quote.source}"
   end
 
   def x_share_url(quote)
