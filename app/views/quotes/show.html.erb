@@ -31,7 +31,9 @@
           <button 
             data-action="click->share#shareX"
             class="flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-blue-500 hover:bg-blue-100 transition-colors group">
-          <span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">share</span>
+          <svg class="w-5 h-5 group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
           <span class="text-sm font-bold">シェア</span>
           </button>
           </div>
@@ -70,7 +72,7 @@
                 <p class="text-base font-bold text-text-main"><%= simple_format(@quote.scene) %></p>
               </div>
           </div>
-        <% if current_user.own?(@quote) %>
+        <% if current_user&.own?(@quote) %>
           <!-- Action Column -->
           <div class="space-y-4">
             

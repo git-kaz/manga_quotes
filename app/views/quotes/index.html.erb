@@ -39,11 +39,15 @@
     <% @quotes.each do |quote| %>
     <%= link_to quote_path(quote), class: "block" do %>
       <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-shadow p-6 flex flex-col justify-between">
-        <p class="text-lg font-medium text-gray-800 dark:text-white mb-4">
+        <div class="flex mb-4">
+        <span class="material-symbols-outlined text-primary mr-2">account_circle</span>
+        <p>@<%= quote.user.username %></p>
+        </div>
+        <p class="text-xl font-semibold text-gray-800 dark:text-white mb-4">
           "<%= quote.content %>"
         </p>
         <div class="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
-          <span class="material-symbols-outlined text-primary">account_circle</span>
+          <span class="material-symbols-outlined text-primary">Person</span>
           <span class="text-primary font-bold"><%= quote.source %></span>
           <span><%= quote.created_at.strftime('%Y/%m/%d') %></span>
         </div>
