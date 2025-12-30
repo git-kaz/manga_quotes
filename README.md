@@ -1,24 +1,29 @@
-# README
+# プレゼンテーションに一言を
+### 公開URL
+https://manga-quotes-oe1x.onrender.com
+## アプリを作った理由
+自分はプレゼン資料を入れるときに「偉人の名言」や「漫画のセリフ」を入れます。
+かっこいい一言を入れれば「こいつできるな」となります。
+漫画のセリフならアイスブレイクになるかも？（いや、なります。）
+ただ、ちょうど良いセリフを検索するのが大変で資料作りの時間を8割使います。（当社比）
+インターネット上で検索するとなかなか見つからないことが多いため、インデックスを作りたく作成しました。
+また、他人と好きなセリフを共有することで本や漫画、映画などの共通の話題からコミュニティが広がるかもしれません。
+## できること（機能一覧）
+- セリフ投稿の追加・編集・削除
+- 内容や場面での検索
+- Xでの共有
+- ログイン、ユーザー情報編集
+## 技術スタック
+- Ruby on Rails
+- PostgreSQL
+- Tailwind CSS
+- Stimulus
+- Render
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 今後の改善ポイント
+- SNSシェア(動的OGP)
+- コメント、いいね機能(ajax)
+- レスポンシブ対応
+- カテゴライズ(enumなど)
+## デプロイ
+- Renderにて公開
