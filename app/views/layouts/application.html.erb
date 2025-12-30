@@ -52,17 +52,20 @@
             <% if user_signed_in? %>
 
               <li class="relative" data-controller="dropdown" data-action="click@window->dropdown#hide">
+                <div class="flex ml-4">
+                <span class="material-symbols-outlined mr-2">identity_platform</span>
                 <button
                   data-action="click->dropdown#toggle"
-                  class="text-primary hover:text-[#d67b20] transition-colors font-medium cursor-pointer flex items-center gap-2"
+                  class="hover:text-[#d67b20] transition-colors font-medium cursor-pointer flex items-center gap-2"
                 >
                   <%= current_user.username %>
                   <span class="material-symbols-outlined text-base">arrow_drop_down_circle</span>
                 </button>
+                </div>
                 <!--ドロップダウン -->
                 <div
                   data-dropdown-target="menu"
-                  class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-10"
+                  class="hidden absolute right-0 mt-2 px-4 w-48 bg-white rounded-lg shadow-lg py-2 z-10"
                 >
                   <%= link_to "マイページ", edit_user_registration_path, 
                   class: "text-primary hover:text-[#d67b20] transition-colors font-medium cursor-pointer" 
