@@ -1,11 +1,10 @@
 class QuotesController < ApplicationController
   before_action :authenticate_user!, only: %i[new create edit update destroy]
-  before_action :authorize_user!, only: %i[edit update destroy]
   before_action :set_quote, only: %i[show edit update destroy]
+  before_action :authorize_user!, only: %i[edit update destroy]
   before_action :set_search
 
   def index
-    @q = Quote.ransack(params[:q])
     @quotes = @q.result(distinct: true).includes(:user).order(created_at: :desc)
   end
 
@@ -24,7 +23,6 @@ class QuotesController < ApplicationController
   end
 
   def show
-    @quote = Quote.find(params[:id])
   end
 
   def edit
@@ -40,7 +38,7 @@ class QuotesController < ApplicationController
 
   def destroy
     @quote.destroy
-    redirect_to quotes_path, notice: 'セリフを削除しました'
+    redirect_to quotes_path, notice: 'セリフを削除しました', status: see_other
   end
 
   private
