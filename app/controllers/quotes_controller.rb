@@ -60,6 +60,5 @@ class QuotesController < ApplicationController
       redirect_to quotes_path, alert: '権限がありません'
     end
   end
-
-
+  
 end
