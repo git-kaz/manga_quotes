@@ -1,43 +1,92 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-orange-50 to-amber-50">
+  <div class="max-w-md w-full bg-white rounded-2xl shadow-xl overflow-hidden">
+     <!-- Header -->
+    <div class="px-8 pt-8 pb-4">
+      <h2 class="text-3xl font-bold text-[#1b140d] text-center">アカウント編集</h2>
+    </div>
+<div class="px-8 pb-8 pt-2">
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "flex flex-col gap-5" }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <label class="flex flex-col gap-1.5 w-full">
+    <span class="text-[#1b140d] text-base font-medium leading-normal">
+      <%= f.label :"メールアドレス" %>
+    </span>
+    <div class="relative">
+      <%= f.email_field :email, 
+      autofocus: true, 
+      autocomplete: "email", 
+      class: "form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#1b140d] focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-[#e7dbcf] bg-[#fcfaf8] focus:border-primary h-12 placeholder:text-[#9a734c] px-4 text-base font-normal leading-normal transition-all"  %>
+    </div>
+  </label>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+  <label class="flex flex-col gap-1.5 w-full">
+    <div class="flex justify-between items-center">
+      <span class="text-[#1b140d] text-base font-medium leading-normal">
+        <%= f.label :"パスワード" %> <i>(変更しない場合は空欄)</i><br />
+      </span>
+    </div>
+    <div class="relative">
+    <%= f.password_field :password, 
+    autocomplete: "new-password",
+    class: "form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#1b140d] focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-[#e7dbcf] bg-[#fcfaf8] focus:border-primary h-12 placeholder:text-[#9a734c] px-4 text-base font-normal leading-normal transition-all"
+     %>
+     <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %>文字以上)</em>
     <% end %>
-  </div>
+    </div>
+  </label>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <label class="flex flex-col gap-1.5 w-full">
+    <div class="flex justify-between items-center">
+      <span class="text-[#1b140d] text-base font-medium leading-normal">
+    <%= f.label :"パスワード確認" %><br />
+      </span>
+    </div>
+    <div class="relative">
+    <%= f.password_field :password_confirmation, 
+    autocomplete: "new-password",
+    class: "form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#1b140d] focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-[#e7dbcf] bg-[#fcfaf8] focus:border-primary h-12 placeholder:text-[#9a734c] px-4 text-base font-normal leading-normal transition-all"
+    %>
   </div>
+  </label>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
+  <label class="flex flex-col gap-1.5 w-full">
+    <div class="flex justify-between items-center">
+      <span class="text-[#1b140d] text-base font-medium leading-normal">
+    <%= f.label :"現在のパスワード" %> 
+    </div>
+    <div class="relative">
+    <%= f.password_field :current_password, 
+    autocomplete: "current-password",
+    class: "form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#1b140d] focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-[#e7dbcf] bg-[#fcfaf8] focus:border-primary h-12 placeholder:text-[#9a734c] px-4 text-base font-normal leading-normal transition-all"
+    %>
   </div>
+  </label>
 
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "更新する",
+    class: "flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-4 mb-4 bg-primary hover:bg-[#d67b20] transition-colors text-white text-base font-bold leading-normal tracking-[0.015em] shadow-sm"
+    %>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
 
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
+<div><%= button_to "アカウントを削除",
+ registration_path(resource_name), 
+ data: { confirm: "Are you sure?", 
+ turbo_confirm: "Are you sure?" }, 
+ method: :delete,
+ class: "flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-4 bg-red-500 hover:bg-red-600  transition-colors text-white text-base font-bold leading-normal tracking-[0.015em] shadow-sm"
+  %></div>
 
-<%= link_to "Back", :back %>
+<div class="mt-6 text-center space-y-2 text-primary font-bold">
+<%= link_to "戻る", :back %>
+</div>
+    </div>
+  </div>
+</div>
