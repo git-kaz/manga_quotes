@@ -9,3 +9,6 @@ application.register("hello", HelloController)
 
 import ShareController from "./share_controller"
 application.register("share", ShareController)
+
+import DropdownController from "./dropdown_controller"
+application.register("dropdown", DropdownController)

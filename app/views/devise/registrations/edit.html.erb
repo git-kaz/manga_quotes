@@ -10,6 +10,19 @@
 
   <label class="flex flex-col gap-1.5 w-full">
     <span class="text-[#1b140d] text-base font-medium leading-normal">
+      <%= f.label :username, "ユーザー名" %>
+    </span>
+    <div class="relative">
+      <%= f.text_field :username, 
+          autofocus: true,
+          autocomplete: "username",
+          placeholder: "例: 敏腕プレゼンター",
+          class: "form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#1b140d] focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-[#e7dbcf] bg-[#fcfaf8] focus:border-primary h-12 placeholder:text-[#9a734c] px-4 text-base font-normal leading-normal transition-all" %>
+    </div>
+  </label>
+
+  <label class="flex flex-col gap-1.5 w-full">
+    <span class="text-[#1b140d] text-base font-medium leading-normal">
       <%= f.label :"メールアドレス" %>
     </span>
     <div class="relative">

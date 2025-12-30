@@ -50,16 +50,28 @@
             <ul class="flex items-center gap-4">
               <%= render 'search', q: @q, url: quotes_path %>
             <% if user_signed_in? %>
-               <li>
-                <%= link_to "マイページ", edit_user_registration_path, 
+
+              <li class="relative" data-controller="dropdown" data-action="click@window->dropdown#hide">
+                <button
+                  data-action="click->dropdown#toggle"
+                  class="text-primary hover:text-[#d67b20] transition-colors font-medium cursor-pointer flex items-center gap-2"
+                >
+                  <%= current_user.username %>
+                  <span class="material-symbols-outlined text-base">arrow_drop_down_circle</span>
+                </button>
+                <!--ドロップダウン -->
+                <div
+                  data-dropdown-target="menu"
+                  class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-10"
+                >
+                  <%= link_to "マイページ", edit_user_registration_path, 
                   class: "text-primary hover:text-[#d67b20] transition-colors font-medium cursor-pointer" 
-                %>
-              </li>
-              <li>
-                <%= button_to "ログアウト", destroy_user_session_path, 
+                  %>
+                  <%= button_to "ログアウト", destroy_user_session_path, 
                   method: :delete, 
                   class: "text-primary hover:text-[#d67b20] transition-colors font-medium cursor-pointer" 
-                %>
+                  %>
+                </div>
               </li>
             <% else %>
               <li>
