@@ -1,5 +1,6 @@
 class QuotesController < ApplicationController
   before_action :authenticate_user!, only: %i[new create edit update destroy]
+  before_action :authorize_user!, only: %i[edit update destroy]
   before_action :set_quote, only: %i[show edit update destroy]
   before_action :set_search
 
@@ -15,9 +16,9 @@ class QuotesController < ApplicationController
   def create
     @quote = current_user.quotes.build(quote_params)
     if @quote.save
-      redirect_to quotes_path, notice: 'Quote was successfully created.'
+      redirect_to @quote, notice: 'セリフを作成しました'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   
   end
@@ -31,15 +32,15 @@ class QuotesController < ApplicationController
 
   def update
     if @quote.update(quote_params)
-      redirect_to quote_path(@quote), notice: 'Quote was successfully updated.'
+      redirect_to quote_path(@quote), notice: 'セリフを更新しました'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     @quote.destroy
-    redirect_to quotes_path, notice: 'Quote was successfully deleted.'
+    redirect_to quotes_path, notice: 'セリフを削除しました'
   end
 
   private
@@ -54,6 +55,12 @@ class QuotesController < ApplicationController
 
   def set_search
     @q = Quote.ransack(params[:q])
+  end
+
+  def authorize_user!
+    unless current_user.own?(@quote)
+      redirect_to quotes_path, alert: '権限がありません'
+    end
   end
 
 
