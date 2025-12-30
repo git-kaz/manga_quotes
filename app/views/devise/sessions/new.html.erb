@@ -1,9 +1,9 @@
-<div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-orange-50 to-amber-50 dark:from-gray-900 dark:to-gray-800">
-  <div class="max-w-md w-full bg-white dark:bg-[#2a1f16] rounded-2xl shadow-xl overflow-hidden">
+<div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-orange-50 to-amber-50">
+  <div class="max-w-md w-full bg-white rounded-2xl shadow-xl overflow-hidden">
     <!-- Header -->
     <div class="px-8 pt-8 pb-4">
-      <h2 class="text-3xl font-bold text-[#1b140d] dark:text-white text-center">ログイン</h2>
-      <p class="mt-2 text-center text-sm text-[#9a734c] dark:text-[#c9a87c]">
+      <h2 class="text-3xl font-bold text-[#1b140d] text-center">ログイン</h2>
+      <p class="mt-2 text-center text-sm text-[#9a734c]">
         アカウントにログインしてください
       </p>
     </div>
@@ -14,7 +14,7 @@
         
         <!-- Email Field -->
         <label class="flex flex-col gap-1.5 w-full">
-          <span class="text-[#1b140d] dark:text-gray-200 text-base font-medium leading-normal">
+          <span class="text-[#1b140d] text-base font-medium leading-normal">
             <%= f.label :email, "メールアドレス" %>
           </span>
           <div class="relative">
@@ -22,7 +22,7 @@
               autofocus: true, 
               autocomplete: "email",
               placeholder: "user@example.com",
-              class: "form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#1b140d] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-[#e7dbcf] dark:border-[#4a3d30] bg-[#fcfaf8] dark:bg-[#221910] focus:border-primary h-12 placeholder:text-[#9a734c] dark:placeholder:text-[#6b5847] px-4 text-base font-normal leading-normal transition-all" 
+              class: "form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#1b140d] focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-[#e7dbcf] bg-[#fcfaf8] focus:border-primary h-12 placeholder:text-[#9a734c] px-4 text-base font-normal leading-normal transition-all" 
             %>
           </div>
         </label>
@@ -30,7 +30,7 @@
         <!-- Password Field -->
         <label class="flex flex-col gap-1.5 w-full">
           <div class="flex justify-between items-center">
-            <span class="text-[#1b140d] dark:text-gray-200 text-base font-medium leading-normal">
+            <span class="text-[#1b140d] text-base font-medium leading-normal">
               <%= f.label :password, "パスワード" %>
             </span>
             <% if devise_mapping.recoverable? %>
@@ -44,7 +44,7 @@
             <%= f.password_field :password, 
               autocomplete: "current-password",
               placeholder: "••••••••",
-              class: "form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#1b140d] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-[#e7dbcf] dark:border-[#4a3d30] bg-[#fcfaf8] dark:bg-[#221910] focus:border-primary h-12 placeholder:text-[#9a734c] dark:placeholder:text-[#6b5847] px-4 text-base font-normal leading-normal transition-all" 
+              class: "form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#1b140d] focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-[#e7dbcf] bg-[#fcfaf8]focus:border-primary h-12 placeholder:text-[#9a734c] px-4 text-base font-normal leading-normal transition-all" 
             %>
           </div>
         </label>
@@ -52,8 +52,8 @@
         <!-- Remember Me -->
         <% if devise_mapping.rememberable? %>
           <label class="flex items-center gap-2">
-            <%= f.check_box :remember_me, class: "rounded border-[#e7dbcf] dark:border-[#4a3d30] text-primary focus:ring-primary" %>
-            <span class="text-[#1b140d] dark:text-gray-200 text-sm">ログイン状態を保持する</span>
+            <%= f.check_box :remember_me, class: "rounded border-[#e7dbcf] text-primary focus:ring-primary" %>
+            <span class="text-[#1b140d] text-sm">ログイン状態を保持する</span>
           </label>
         <% end %>
 
