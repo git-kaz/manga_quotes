@@ -1,7 +1,7 @@
 <div class="container mx-auto px-4 py-8">
     
   <!-- ヒーローセクション -->
-  <section class="mb-10 rounded-2xl bg-gradient-to-r from-orange-50 to-amber-50 dark:from-gray-800 dark:to-gray-900 border border-orange-100 dark:border-gray-700 overflow-hidden relative">
+  <section class="mb-10 rounded-2xl bg-gradient-to-r from-orange-50 to-amber-50 dark:from-gray-800 dark:to-gray-900 border border-orange-100 dark:border-gray-700 overflow-hidden relative z-10">
     <!-- 装飾用の背景 -->
     <div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
     
@@ -39,11 +39,15 @@
     <% @quotes.each do |quote| %>
     <%= link_to quote_path(quote), class: "block" do %>
       <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-shadow p-6 flex flex-col justify-between">
-        <p class="text-lg font-medium text-gray-800 dark:text-white mb-4">
+        <div class="flex mb-4">
+        <span class="material-symbols-outlined text-primary mr-2">account_circle</span>
+        <p>@<%= quote.user.username %></p>
+        </div>
+        <p class="text-xl font-semibold text-gray-800 dark:text-white mb-4">
           "<%= quote.content %>"
         </p>
         <div class="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
-          <span class="material-symbols-outlined text-primary">account_circle</span>
+          <span class="material-symbols-outlined text-primary">Person</span>
           <span class="text-primary font-bold"><%= quote.source %></span>
           <span><%= quote.created_at.strftime('%Y/%m/%d') %></span>
         </div>
