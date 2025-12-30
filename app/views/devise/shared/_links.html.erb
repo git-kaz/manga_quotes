@@ -1,14 +1,14 @@
 <div class="flex flex-col gap-3 text-sm">
   <%- if controller_name != 'sessions' %>
     <div class="text-center">
-      <span class="text-[#9a734c] dark:text-[#c9a87c]">既にアカウントをお持ちの方は</span>
+      <span class="text-[#9a734c]">既にアカウントをお持ちの方は</span>
       <%= link_to "ログイン", new_session_path(resource_name), class: "text-primary hover:text-[#d67b20] transition-colors font-medium ml-1" %>
     </div>
   <% end %>
 
   <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
     <div class="text-center">
-      <span class="text-[#9a734c] dark:text-[#c9a87c]">アカウントをお持ちでない方は</span>
+      <span class="text-[#9a734c]">アカウントをお持ちでない方は</span>
       <%= link_to "新規登録", new_registration_path(resource_name), class: "text-primary hover:text-[#d67b20] transition-colors font-medium ml-1" %>
     </div>
   <% end %>
@@ -37,7 +37,7 @@
         <%= button_to "#{OmniAuth::Utils.camelize(provider)}でログイン", 
           omniauth_authorize_path(resource_name, provider), 
           data: { turbo: false },
-          class: "w-full flex items-center justify-center gap-2 rounded-lg h-12 px-4 border-2 border-[#e7dbcf] dark:border-[#4a3d30] bg-white dark:bg-[#221910] hover:bg-[#fcfaf8] dark:hover:bg-[#2a1f16] transition-colors text-[#1b140d] dark:text-white text-base font-medium" 
+          class: "w-full flex items-center justify-center gap-2 rounded-lg h-12 px-4 border-2 border-[#e7dbcf] bg-white hover:bg-[#fcfaf8] transition-colors text-[#1b140d] text-base font-medium" 
         %>
       </div>
     <% end %>
