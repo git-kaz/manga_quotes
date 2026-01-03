@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :quotes, dependent: :destroy
+
+  validates :username, presence: true, uniqueness: true
   
   def own?(object)
     id == object&.user_id
