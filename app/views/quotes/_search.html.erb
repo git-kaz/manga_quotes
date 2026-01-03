@@ -1,4 +1,7 @@
-<%= search_form_for q, url: url do |f| %>
-    <%= f.search_field :scene_or_content_cont, class: 'pl-10 pr-3 py-2 border-none rounded-lg bg-[#f3ede7] text-sm placeholder-text-sub focus:ring-2 focus:ring-primary focus:bg-white transition-all', placeholder: 'セリフを探す'%>
-    <%= f.submit '検索', class: 'btn btn-primary ml-2 py-1 px-4 cursor-pointer rounded-xl bg-primary hover:bg-orange-600 shadow-lg shadow-orange-500/30 text-white' %>
+<%= search_form_for q, url: url, html: { class: 'w-full flex gap-2' } do |f| %>
+    <%= f.search_field :scene_or_content_cont, 
+    class: 'flex-1 pl-10 pr-3 py-2 border-none rounded-lg bg-[#f3ede7] text-sm placeholder-text-sub focus:ring-2 focus:ring-primary focus:bg-white transition-all', 
+    placeholder: 'セリフを探す'%>
+    <%= f.submit '検索', 
+    class: 'btn btn-primary ml-2 py-1 px-4 cursor-pointer rounded-xl bg-primary hover:bg-orange-600 shadow-lg shadow-orange-500/30 text-white' %>
 <% end %>
