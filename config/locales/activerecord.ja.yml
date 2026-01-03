@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+      user:
+      quote:
+    attributes:
+      quote:
+        content: 内容
+        source: 出典
+        scene: 場面
