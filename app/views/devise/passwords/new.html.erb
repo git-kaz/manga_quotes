@@ -1,16 +1,40 @@
-<h2>Forgot your password?</h2>
-
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+<div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-orange-50 to-amber-50">
+  <div class="max-w-md w-full bg-white rounded-2xl shadow-xl overflow-hidden">
+<div class="px-8 pt-8 pb-4">
+      <h2 class="text-3xl font-bold text-[#1b140d] text-center">パスワードリセット</h2>
+      <p class="mt-2 text-center text-sm text-[#9a734c]">
+        メールアドレスを入力
+      </p>
+    </div>
+<div class="px-8 pb-8 pt-2">
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { class: "flex flex-col gap-5", method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <label class="flex flex-col gap-1.5 w-full">
+          <span class="text-[#1b140d] text-base font-medium leading-normal">
+            <%= f.label :email, "メールアドレス" %>
+          </span>
+          <div class="relative">
+            <%= f.email_field :email, 
+              autofocus: true, 
+              autocomplete: "email",
+              placeholder: "user@example.com",
+              class: "form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#1b140d] focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-[#e7dbcf] bg-[#fcfaf8] focus:border-primary h-12 placeholder:text-[#9a734c] px-4 text-base font-normal leading-normal transition-all" 
+            %>
+          </div>
+  </label>
 
   <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
+    <%= f.submit "パスワードをリセット", class: "flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-4 mb-4 bg-primary hover:bg-[#d67b20] transition-colors text-white text-base font-bold leading-normal tracking-[0.015em] shadow-sm"  %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+<%= link_to quotes_path, 
+    class: "flex items-center justify-center gap-2 w-full px-4 py-3 mt-4 bg-gray-100 hover:bg-gray-200 text-text-main font-bold rounded-xl transition-all" do %>
+    <span class="material-symbols-outlined text-[20px]">arrow_back</span>
+      一覧に戻る
+<% end %>
+</div>
+</dev>
+</dev>
