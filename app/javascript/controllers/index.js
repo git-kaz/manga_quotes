@@ -4,11 +4,14 @@
 
 import { application } from "./application"
 
+import DropdownController from "./dropdown_controller"
+application.register("dropdown", DropdownController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import MobileMenuController from "./mobile_menu_controller"
+application.register("mobile-menu", MobileMenuController)
+
 import ShareController from "./share_controller"
 application.register("share", ShareController)
-
-import DropdownController from "./dropdown_controller"
-application.register("dropdown", DropdownController)
