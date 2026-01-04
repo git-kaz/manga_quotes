@@ -5,7 +5,7 @@ class QuotesController < ApplicationController
   before_action :set_search
 
   def index
-    @quotes = @q.result(distinct: true).includes(:user).order(created_at: :desc)
+    @quotes = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page])
   end
 
   def new
