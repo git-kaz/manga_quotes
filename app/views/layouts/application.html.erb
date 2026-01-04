@@ -89,16 +89,16 @@
                   </div>
                 </li>
               <% else %>
-                <li>
-                  <%= link_to "新規登録", new_user_registration_path, 
-                    class: "text-primary hover:text-[#d67b20] transition-colors font-medium cursor-pointer" 
-                  %>
-                </li>
-                <li>
-                  <%= link_to "ログイン", new_user_session_path, 
-                    class: "text-white bg-primary hover:bg-orange-600 transition-colors font-medium px-4 py-2 rounded-lg cursor-pointer"  
-                  %>
-                </li>
+                <li class="flex-shrink-0">
+      <%= link_to "新規登録", new_user_registration_path, 
+        class: "text-primary hover:text-[#d67b20] transition-colors font-medium cursor-pointer whitespace-nowrap" 
+      %>
+    </li>
+    <li class="flex-shrink-0">
+      <%= link_to "ログイン", new_user_session_path, 
+        class: "text-white bg-primary hover:bg-orange-600 transition-colors font-medium px-3 xl:px-4 py-2 rounded-lg cursor-pointer whitespace-nowrap"  
+      %>
+    </li>
               <% end %>
             </ul>
           </div>
