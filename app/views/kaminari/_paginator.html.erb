@@ -6,9 +6,8 @@
     remote:        data-remote
     paginator:     the paginator that renders the pagination tags inside
 -%>
-<%= paginator.render do -%>
-  <nav class="pagination" role="navigation" aria-label="pager">
-    <%= first_page_tag unless current_page.first? %>
+<nav class="flex justify-center gap-2 my-8">
+  <%= paginator.render do -%>
     <%= prev_page_tag unless current_page.first? %>
     <% each_page do |page| -%>
       <% if page.display_tag? -%>
@@ -17,9 +16,6 @@
         <%= gap_tag %>
       <% end -%>
     <% end -%>
-    <% unless current_page.out_of_range? %>
-      <%= next_page_tag unless current_page.last? %>
-      <%= last_page_tag unless current_page.last? %>
-    <% end %>
-  </nav>
-<% end -%>
+    <%= next_page_tag unless current_page.last? %>
+  <% end -%>
+</nav>
