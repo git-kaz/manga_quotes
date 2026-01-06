@@ -1,0 +1,17 @@
+<%= turbo_frame_tag "like-button-#{quote.id}" do %>
+    <% if current_user&.like?(quote) %>
+        <%= button_to quote_like_path(quote),
+                      method: :delete,
+                      class: "flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-700 transition-colors" do %>
+            <span class="material-symbols-outlined text-xl">favorite</span>
+            <%= quote.likes.count %>
+        <% end %>
+    <% else %>
+        <%= button_to quote_like_path(quote),
+                      method: :post,
+                      class: "flex items-center gap-2 px-4 py-2 border border-primary text-primary rounded-lg hover:bg-primary transition-colors" do %>
+            <span class ="material-symbols-outlined text-xl">favorite</span>
+            <%= quote.likes.count %>
+        <% end %>
+    <% end %>
+<% end %>
