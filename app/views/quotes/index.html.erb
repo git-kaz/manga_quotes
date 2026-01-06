@@ -36,12 +36,14 @@
 
   <!-- 名言一覧 -->
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-    <% @quotes.each do |quote| %>
-    <%= link_to quote_path(quote), class: "block" do %>
-      <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow p-6 flex flex-col justify-between">
+  <% @quotes.each do |quote| %>
+    <!-- ここで1つのグリッドアイテムとしてまとめる -->
+    <div class="flex flex-col">
+      <!-- カード本体 -->
+      <%= link_to quote_path(quote), class: "block bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow p-6 flex-grow" do %>
         <div class="flex mb-4">
-        <span class="material-symbols-outlined text-primary mr-2">account_circle</span>
-        <p>@<%= quote.user.username %></p>
+          <span class="material-symbols-outlined text-primary mr-2">account_circle</span>
+          <p>@<%= quote.user.username %></p>
         </div>
         <p class="text-xl font-semibold text-gray-800 mb-4">
           "<%= quote.content %>"
@@ -51,9 +53,14 @@
           <span class="text-primary font-bold"><%= quote.source %></span>
           <span><%= quote.created_at.strftime('%Y/%m/%d') %></span>
         </div>
-      </div>
       <% end %>
-    <% end %>
-  </div>
+      
+      <!-- いいねボタン（カード下部） -->
+      <div class="mt-4">
+        <%= render 'likes/like_button', quote: quote %>
+      </div>
+    </div>
+  <% end %>
+</div>
   <%= paginate @quotes %>
 </div>
